@@ -23,12 +23,13 @@ class Search extends Component {
         this.setState({ query: query });
         const trimmedQuery = query.trim();
         if (trimmedQuery === '') {
-            return;
+        this.setState({ books: [] });
+                        return ;
         }
         BooksAPI.search(trimmedQuery, 5).then((response) => {
             if (response && response.length) {
                 const books = response.map((book) => {
-                    const libBook = libraryBooks.find((libBook) => libBook.id === book.id);
+                    const libBook = libraryBooks.filter((libBook) => libBook.id === book.id);
                     const shelf = libBook ? libBook.shelf : 'none';
 
                     return {
@@ -64,6 +65,7 @@ class Search extends Component {
                     type="text"
                     placeholder="Search by title or author"
                     onChange={ (event) => this.updateQuery(event.target.value) }
+                    value = { this.state.query }
                 />
               </div>
             </div>
