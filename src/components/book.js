@@ -26,7 +26,10 @@ class Book extends Component {
         return(
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={ { width: 128, height: 193, backgroundImage: `url("${ thumbnail }")`, backgroundSize: 'cover'  } }>
+                    <div className="book-cover" style={ { width: 128, height: 193,
+                         backgroundImage: `url(${thumbnail})`,
+
+                         backgroundSize: 'cover'  } }>
                     </div>
                     <div className="book-shelf-changer">
                         <select
@@ -36,7 +39,7 @@ class Book extends Component {
                             <option value="none" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
-                            <option value="read">Read</option>
+                            <option value="read">Finished Reading</option>
                             <option value="none">Remove Book</option>
                         </select>
                     </div>

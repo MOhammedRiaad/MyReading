@@ -29,17 +29,18 @@ class Search extends Component {
         BooksAPI.search(trimmedQuery, 5).then((response) => {
             if (response && response.length) {
                 const books = response.map((book) => {
-                    const libBook = libraryBooks.filter((libBook) => libBook.id === book.id);
+                    const libBook = libraryBooks.find((libBook) => libBook.id === book.id);
                     const shelf = libBook ? libBook.shelf : 'none';
-
                     return {
                         id: book.id,
                         shelf: shelf,
-                        authors: book.authors,
-                        title: book.title,
+                        authors: book.authors !== undefined ? book.authors : 'Author name not found',
+                        title: book.title !== undefined ? book.title : 'Book Title not found',
+
                         imageLinks: {
-                            thumbnail: book.imageLinks.thumbnail
+                                thumbnail: book.imageLinks !== undefined  ? book.imageLinks.thumbnail : 'http://via.placeholder.com/128x193?text=No%20Cover'
                         }
+
                     };
                 });
                 this.setState({ books });

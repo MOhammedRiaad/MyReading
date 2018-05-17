@@ -31,7 +31,7 @@ class Library extends Component {
                   updateBookShelf={ updateBookShelf }
                 />
                 <Bookshelf
-                  name="Read"
+                  name="Finished Reading"
                   books={ this._filterBooks('read') }
                   updateBookShelf={ updateBookShelf }
                 />
